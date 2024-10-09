@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "A chatbot interface styled as an Old English Village GP",
   "main": "src/index.js",
-  "homepage": "https://gpe-easygp.vercel.app", // Update this to your Vercel-provided URL
+  "homepage": "https://gpe-easygp.vercel.app",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build", // Used by Vercel for deployment
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -52,6 +52,6 @@
     "react",
     "vercel"
   ],
-  "author": "Your Name Here",
+  "author": "Dr Bata",
   "license": "ISC"
 }
