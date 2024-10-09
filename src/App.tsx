@@ -1,13 +1,10 @@
 import React from 'react';
-import ChatContainer from './components/ChatContainer';
-import HealthChatbot from './components/HealthChatbot';
 
 function App() {
   return (
     <div className="App">
-      <ChatContainer>
-        <HealthChatbot />
-      </ChatContainer>
+      <h1>Hello, EasyGP!</h1>
+      <p>This is a test to see if the app renders correctly.</p>
     </div>
   );
 }
