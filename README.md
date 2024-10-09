@@ -1,14 +1,14 @@
 # Health Chatbot Application
 
-This project consists of a Flask backend and a React frontend for a health chatbot application.
+This project consists of a serverless chatbot backend and a React frontend for a health chatbot application designed to provide a conversational interface in the style of an Old English Village GP.
 
 ## Project Structure
 
 ```
 .
+├── api/
+│   └── chatbot.py   # Serverless Python backend code
 ├── src/
-│   ├── backend/
-│   │   └── app.py
 │   ├── components/
 │   │   ├── ChatContainer.tsx
 │   │   ├── CustomScrollbar.tsx
@@ -21,58 +21,49 @@ This project consists of a Flask backend and a React frontend for a health chatb
 │   │       ├── card.tsx
 │   │       ├── input.tsx
 │   │       └── scroll-area.tsx
-│   ├── lib/
-│   │   └── utils.ts
-│   ├── App.tsx
-│   └── index.tsx
+│   ├── App.tsx      # Main entry point for the React app
+│   └── index.tsx    # React DOM render logic
 ├── public/
 │   └── index.html
 ├── .env
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
-├── requirements.txt
+├── vercel.json      # Vercel deployment configuration
 └── tsconfig.json
 ```
 
-## Updating the Backend
+## Backend (API) Updates
 
-The backend is located in `src/backend/app.py`. When updating the backend logic:
+The backend is located in `api/chatbot.py`. It uses a serverless handler for Vercel deployment.
 
-1. Ensure Flask and required dependencies are installed (`pip install -r requirements.txt`).
-2. Maintain the existing route (`/api/chatbot`) unless you're also updating the frontend to match.
-3. Keep the CORS configuration to allow frontend requests.
-4. If adding new dependencies, update `requirements.txt`.
-5. Test your changes locally before committing.
+### Updating the Backend Logic
+- Ensure Flask and required dependencies are installed (`pip install -r requirements.txt`), though for Vercel, the code is using `BaseHTTPRequestHandler`.
+- Maintain the existing route (`/api/chatbot`) unless you're also updating the frontend to match.
+- Keep the conversation dictionary up to date to enhance the chatbot's responses.
 
 Example of updating the chatbot logic:
 
 ```python
-@app.route('/api/chatbot', methods=['POST'])
-def chatbot():
-    data = request.get_json()
-    user_input = data.get('input', '')
-
+# Helper function to find best match
+def find_best_match(user_input, state):
     # Update your chatbot logic here
-    response = your_updated_chatbot_logic(user_input)
-    
-    return jsonify({'response': response})
+    ...
 ```
 
-## Updating the Frontend
+## Frontend Updates
 
-The frontend is a React application using TypeScript. When updating the frontend:
+The frontend is a React application using TypeScript.
 
-1. Ensure all dependencies are installed (`npm install`).
-2. Main application logic is in `src/App.tsx` and components are in `src/components/`.
-3. Maintain the overall structure of `App.tsx` unless you're refactoring the entire application.
-4. When updating or adding components, keep them in the `src/components/` directory.
-5. Use TypeScript for type safety. Update `tsconfig.json` if needed.
-6. Test your changes locally (`npm start`) before committing.
+### Updating the Frontend Components
+- The main application logic is in `src/App.tsx` and components are in `src/components/`.
+- Ensure all dependencies are installed (`npm install`).
+- Maintain the structure of `App.tsx` unless you're refactoring the entire application.
+- When updating or adding components, keep them in the `src/components/` directory.
 
 Example of updating a component:
 
-```typescript
+```tsx
 // src/components/HealthChatbot.tsx
 import React, { useState } from 'react';
 import { Card } from './ui/card';
@@ -108,13 +99,16 @@ export default HealthChatbot;
 ## Development Workflow
 
 1. Use your preferred external editor to make changes.
-2. For backend changes:
-   - Run the Flask server locally (`python src/backend/app.py`).
+2. **Backend Changes**:
+   - Run the server locally (`python api/chatbot.py`).
    - Test endpoints using tools like Postman or curl.
-3. For frontend changes:
+3. **Frontend Changes**:
    - Run the React development server (`npm start`).
-   - Test in the browser (usually at `http://localhost:3000`).
+   - Test in the browser (usually at [http://localhost:3000](http://localhost:3000)).
 4. Commit changes frequently and use descriptive commit messages.
-5. If working in a team, consider using feature branches and pull requests.
+5. **Deployment**:
+   - Ensure `vercel.json` is correctly set up for deployment.
+   - Run `vercel` to deploy both backend and frontend.
 
-By following these guidelines, you can safely update both the backend logic and frontend interface using external editors without breaking existing functionality.
+By following these guidelines, you can safely update both the backend logic and the frontend interface without breaking existing functionality, and deploy the updated version to Vercel for production.
+
