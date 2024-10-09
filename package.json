@@ -2,8 +2,8 @@
   "name": "easygp",
   "version": "1.0.0",
   "description": "A chatbot styled as an Old English Village GP",
-  "main": "src/index.js",
-  "homepage": "https://easygp.com",
+  "main": "src/index.tsx",
+  "homepage": "https://easygp-new.vercel.app/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
