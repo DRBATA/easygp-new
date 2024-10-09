@@ -38,6 +38,7 @@ This project consists of a serverless chatbot backend and a React frontend for a
 The backend is located in `api/chatbot.py`. It uses a serverless handler for Vercel deployment.
 
 ### Updating the Backend Logic
+
 - Ensure Flask and required dependencies are installed (`pip install -r requirements.txt`), though for Vercel, the code is using `BaseHTTPRequestHandler`.
 - Maintain the existing route (`/api/chatbot`) unless you're also updating the frontend to match.
 - Keep the conversation dictionary up to date to enhance the chatbot's responses.
@@ -56,6 +57,7 @@ def find_best_match(user_input, state):
 The frontend is a React application using TypeScript.
 
 ### Updating the Frontend Components
+
 - The main application logic is in `src/App.tsx` and components are in `src/components/`.
 - Ensure all dependencies are installed (`npm install`).
 - Maintain the structure of `App.tsx` unless you're refactoring the entire application.
@@ -110,5 +112,43 @@ export default HealthChatbot;
    - Ensure `vercel.json` is correctly set up for deployment.
    - Run `vercel` to deploy both backend and frontend.
 
+## Vercel Configuration
+
+The `vercel.json` file is used to define the deployment settings for both the backend and frontend.
+
+```json
+{
+  "builds": [
+    {
+      "src": "api/**/*.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "src/**/*",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/chatbot",
+      "dest": "api/chatbot.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "public/index.html"
+    }
+  ]
+}
+```
+
 By following these guidelines, you can safely update both the backend logic and the frontend interface without breaking existing functionality, and deploy the updated version to Vercel for production.
+
+### Common Deployment Errors
+
+- **JSON Parsing Error**: Make sure the `package.json` and `vercel.json` files are correctly formatted. Common issues include missing commas, incorrect quotes, or misplaced braces.
+- **Push Issues**: Ensure all changes are committed and pushed to the correct upstream branch (`git push --set-upstream origin main` if needed).
 
