@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "typeRoots": ["node_modules/@types"],
-    "moduleResolution": "node"
+    "moduleResolution": "node",
     "jsx": "react-jsx"
   }
 }
