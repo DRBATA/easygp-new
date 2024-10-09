@@ -152,3 +152,4 @@ By following these guidelines, you can safely update both the backend logic and 
 - **JSON Parsing Error**: Make sure the `package.json` and `vercel.json` files are correctly formatted. Common issues include missing commas, incorrect quotes, or misplaced braces.
 - **Push Issues**: Ensure all changes are committed and pushed to the correct upstream branch (`git push --set-upstream origin main` if needed).
 
+# eas
