@@ -1,9 +1,9 @@
 {
-  "name": "healthchatbot-old-english-gp",
+  "name": "easygp",
   "version": "1.0.0",
-  "description": "A chatbot interface styled as an Old English Village GP",
+  "description": "A chatbot styled as an Old English Village GP",
   "main": "src/index.js",
-  "homepage": "https://gpe-easygp.vercel.app",
+  "homepage": "https://easygp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
